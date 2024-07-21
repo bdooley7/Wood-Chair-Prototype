@@ -31,7 +31,7 @@
     function adjustIframeScale() {
       const iframe = document.getElementById('responsiveIframe');
       const iframeWidth = iframe.clientWidth;
-      const iframeScale = iframeWidth < 400 ? 0.2 : 0.5;
+      const iframeScale = iframeWidth < 400 ? 0.25 : 0.5;
       iframe.contentWindow.postMessage({ scale: iframeScale }, '*');
     }
 
