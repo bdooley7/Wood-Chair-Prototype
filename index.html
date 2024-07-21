@@ -4,20 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- PLEASE NO CHANGES BELOW THIS LINE (UNTIL I SAY SO) -->
-  <script language="javascript" type="text/javascript" src="p5.min.js"></script>
-  <script language="javascript" type="text/javascript" src="p5.min.js"></script>
-  <script language="javascript" type="text/javascript" src="sketch_240713b_p5.js"></script>
-  <!-- OK, YOU CAN MAKE CHANGES BELOW THIS LINE AGAIN -->
-
   <style>
-    body {
-      padding: 0;
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
-
 <body>
+  <iframe id="responsiveIframe" src="sketch_240713b_p5.html"></iframe>
+
+  <script>
+    function adjustIframeScale() {
+      const iframe = document.getElementById('responsiveIframe');
+      const screenWidth = window.innerWidth;
+      const iframeScale = screenWidth < 760 ? 0.3 : 0.5;
+      iframe.contentWindow.postMessage({ scale: iframeScale }, '*');
+    }
+
+    window.addEventListener('resize', adjustIframeScale);
+    window.addEventListener('load', adjustIframeScale);
+  </script>
 </body>
 </html>
