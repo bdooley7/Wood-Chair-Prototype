@@ -14,6 +14,8 @@ let previousMouseY = 0;
 let rotationX = 0;
 let rotationY = 0;
 
+let scaleFactor = 0.5;  // Default scale
+
 class BSpline {
   constructor() {
     this.controlPoints = [];
@@ -129,12 +131,8 @@ function draw() {
   // Translate the model so that its center is at the origin
   translate(-modelCenter.x, -modelCenter.y, -modelCenter.z);
   
-  // Adjust scale based on screen width
-  if (windowWidth < 400) {
-    scale(0.3);  // Half of the current scale (0.5)
-  } else {
-    scale(0.5);  // Current scale
-  }
+  // Adjust scale based on received scale factor
+  scale(scaleFactor);
 
   // Draw polygonal surfaces
   noStroke();
@@ -181,6 +179,33 @@ function mouseDragged() {
 
 function mouseReleased() {
   dragging = false;
+}
+
+function mouseWheel(event) {
+  scaleFactor += event.delta > 0 ? -0.05 : 0.05;
+  scaleFactor = constrain(scaleFactor, 0.1, 2); // Set limits to zoom
+}
+
+function touchMoved(event) {
+  if (event.touches.length == 2) {
+    let dx = event.touches[0].pageX - event.touches[1].pageX;
+    let dy = event.touches[0].pageY - event.touches[1].pageY;
+    let distance = sqrt(dx * dx + dy * dy);
+
+    if (this.lastDistance) {
+      let delta = distance - this.lastDistance;
+      scaleFactor += delta > 0 ? 0.01 : -0.01;
+      scaleFactor = constrain(scaleFactor, 0.1, 2); // Set limits to zoom
+    }
+
+    this.lastDistance = distance;
+  }
+
+  return false; // Prevent default touch behavior
+}
+
+function touchEnded(event) {
+  this.lastDistance = null;
 }
 
 function calculateModelCenter() {
