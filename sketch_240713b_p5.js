@@ -130,7 +130,7 @@ function draw() {
   translate(-modelCenter.x, -modelCenter.y, -modelCenter.z);
   
   // Adjust scale based on screen width
-  if (windowWidth < 786) {
+  if (windowWidth < 400) {
     scale(0.3);  // Half of the current scale (0.5)
   } else {
     scale(0.5);  // Current scale
