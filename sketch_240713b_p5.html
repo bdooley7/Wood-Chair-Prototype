@@ -29,6 +29,7 @@
     window.addEventListener('message', (event) => {
       if (event.data.scale !== undefined) {
         scaleFactor = event.data.scale;
+        redraw();  // Trigger a redraw with the new scale factor
       }
     });
   </script>
