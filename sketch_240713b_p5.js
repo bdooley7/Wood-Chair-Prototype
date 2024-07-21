@@ -76,10 +76,9 @@ function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
   pixelDensity(2);
   smooth(8);
-  frameRate(40);
-  strokeWeight(0.5);
+  frameRate(30);
+  strokeWeight(0.4);
   
-
   noLights();
 
   if (!modelGeometry) {
@@ -127,7 +126,7 @@ function draw() {
   }
 
   // Translate to center the model on the canvas and move it up slightly
-  translate(-modelCenter.x, -modelCenter.y + 50, -modelCenter.z);
+  translate(-modelCenter.x, -modelCenter.y + 20, -modelCenter.z);
 
   // Adjust scale based on received scale factor
   scale(scaleFactor);
