@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Include p5.js library -->
+  <script language="javascript" type="text/javascript" src="p5.min.js"></script>
+
+  <!-- Include your p5.js sketch -->
+  <script language="javascript" type="text/javascript" src="sketch_240713b_p5.js"></script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.addEventListener('message', (event) => {
+      if (event.data.scale !== undefined) {
+        scaleFactor = event.data.scale;
+      }
+    });
+  </script>
+</body>
+</html>
