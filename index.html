@@ -30,8 +30,8 @@
   <script>
     function adjustIframeScale() {
       const iframe = document.getElementById('responsiveIframe');
-      const screenWidth = window.innerWidth;
-      const iframeScale = screenWidth < 760 ? 0.3 : 0.5;
+      const iframeWidth = iframe.clientWidth;
+      const iframeScale = iframeWidth < 400 ? 0.3 : 0.5;
       iframe.contentWindow.postMessage({ scale: iframeScale }, '*');
     }
 
