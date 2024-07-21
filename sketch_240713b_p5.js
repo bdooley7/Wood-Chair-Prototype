@@ -126,7 +126,7 @@ function draw() {
   }
 
   // Translate to center the model on the canvas and move it up slightly
-  translate(-modelCenter.x, -modelCenter.y + 20, -modelCenter.z);
+  translate(-modelCenter.x, -modelCenter.y - 14, -modelCenter.z);
 
   // Adjust scale based on received scale factor
   scale(scaleFactor);
