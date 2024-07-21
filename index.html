@@ -37,6 +37,9 @@
 
     window.addEventListener('resize', adjustIframeScale);
     window.addEventListener('load', adjustIframeScale);
+
+    // Ensure the message is sent when the iframe content is fully loaded
+    document.getElementById('responsiveIframe').addEventListener('load', adjustIframeScale);
   </script>
 </body>
 </html>
